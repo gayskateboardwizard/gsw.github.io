@@ -15,11 +15,10 @@
             height: 100vh;
         }
 
-        #levText {
+        #lev {
             color: white;
             font-size: 3em;
             font-family: 'Arial', sans-serif;
-            text-align: center;
             position: absolute;
         }
 
@@ -27,25 +26,58 @@
             position: absolute;
             background-color: white;
             border-radius: 50%;
-            animation: moveLeft 20s linear infinite;
-            opacity: 0.2;
-        }
-
-        @keyframes moveLeft {
-            to {
-                transform: translateX(-100vw);
-            }
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <div id="levText">Lev</div>
-    
-    <!-- Dots -->
-    <div class="dot" style="width: 10px; height: 10px; top: 50vh; left: 10vw;"></div>
-    <div class="dot" style="width: 8px; height: 8px; top: 30vh; left: 20vw;"></div>
-    <div class="dot" style="width: 12px; height: 12px; top: 70vh; left: 30vw;"></div>
-    <!-- Add more dots as desired -->
+    <div id="lev">Lev</div>
 
+    <script>
+        const container = document.body;
+        const levText = document.getElementById('lev');
+
+        function createDot() {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            container.appendChild(dot);
+            return dot;
+        }
+
+        function updateDot(dot) {
+            const size = Math.random() * 4 + 1;
+            const brightness = Math.random();
+            const position = Math.random() * window.innerWidth;
+
+            dot.style.width = size + 'px';
+            dot.style.height = size + 'px';
+            dot.style.opacity = brightness;
+            dot.style.left = position + 'px';
+        }
+
+        function moveDots() {
+            const dots = document.querySelectorAll('.dot');
+
+            dots.forEach(dot => {
+                const leftValue = parseFloat(dot.style.left);
+                dot.style.left = leftValue - 0.2 + 'px';
+
+                if (leftValue < 0) {
+                    updateDot(dot);
+                    dot.style.left = window.innerWidth + 'px';
+                }
+            });
+
+            requestAnimationFrame(moveDots);
+        }
+
+        // Initial dots
+        for (let i = 0; i < 30; i++) {
+            const dot = createDot();
+            updateDot(dot);
+        }
+
+        moveDots();
+    </script>
 </body>
 </html>
