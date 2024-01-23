@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lev Constellation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #levText {
+            color: white;
+            font-size: 3em;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            position: absolute;
+        }
+
+        .dot {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: moveLeft 20s linear infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes moveLeft {
+            to {
+                transform: translateX(-100vw);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="levText">Lev</div>
+    
+    <!-- Dots -->
+    <div class="dot" style="width: 10px; height: 10px; top: 50vh; left: 10vw;"></div>
+    <div class="dot" style="width: 8px; height: 8px; top: 30vh; left: 20vw;"></div>
+    <div class="dot" style="width: 12px; height: 12px; top: 70vh; left: 30vw;"></div>
+    <!-- Add more dots as desired -->
+
+</body>
+</html>
