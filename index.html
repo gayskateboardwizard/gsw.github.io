@@ -1,83 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lev Constellation</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Design</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #303030; /* Dark Grey Background */
+      color: white; /* White Text */
+      font-family: 'Arial', sans-serif;
+    }
 
-        #lev {
-            color: white;
-            font-size: 3em;
-            font-family: 'Arial', sans-serif;
-            position: absolute;
-        }
+    .retro-container {
+      position: relative;
+    }
 
-        .dot {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-    </style>
+    .retro-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .white-layer {
+      background-color: white;
+      opacity: 0.6; /* Adjust the opacity as needed */
+    }
+
+    .blue-layer {
+      background-color: #4169E1; /* Royal Blue */
+      opacity: 0.6; /* Adjust the opacity as needed */
+    }
+
+    .pink-layer {
+      background-color: #FF69B4; /* Hot Pink */
+      opacity: 0.6; /* Adjust the opacity as needed */
+    }
+
+    .yellow-layer {
+      background-color: #FFFF00; /* Yellow */
+      opacity: 0.6; /* Adjust the opacity as needed */
+    }
+  </style>
 </head>
 <body>
-    <div id="lev">Lev</div>
-
-    <script>
-        const container = document.body;
-        const levText = document.getElementById('lev');
-
-        function createDot() {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            container.appendChild(dot);
-            return dot;
-        }
-
-        function updateDot(dot) {
-            const size = Math.random() * 4 + 1;
-            const brightness = Math.random();
-            const position = Math.random() * window.innerWidth;
-
-            dot.style.width = size + 'px';
-            dot.style.height = size + 'px';
-            dot.style.opacity = brightness;
-            dot.style.left = position + 'px';
-        }
-
-        function moveDots() {
-            const dots = document.querySelectorAll('.dot');
-
-            dots.forEach(dot => {
-                const leftValue = parseFloat(dot.style.left);
-                dot.style.left = leftValue - 0.2 + 'px';
-
-                if (leftValue < 0) {
-                    updateDot(dot);
-                    dot.style.left = window.innerWidth + 'px';
-                }
-            });
-
-            requestAnimationFrame(moveDots);
-        }
-
-        // Initial dots
-        for (let i = 0; i < 30; i++) {
-            const dot = createDot();
-            updateDot(dot);
-        }
-
-        moveDots();
-    </script>
+  <div class="retro-container">
+    <div class="retro-layer white-layer"></div>
+    <div class="retro-layer blue-layer"></div>
+    <div class="retro-layer pink-layer"></div>
+    <div class="retro-layer yellow-layer"></div>
+    <div style="text-align: center; z-index: 1; position: relative;">
+      <h1 style="font-weight: bold;">Your Retro Title</h1>
+      <p>Your retro content goes here.</p>
+    </div>
+  </div>
 </body>
 </html>
